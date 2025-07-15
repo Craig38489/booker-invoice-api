@@ -1,7 +1,7 @@
 services:
   - type: web
     name: booker-invoice-api
-    env: docker
+    env: python
     plan: free
-    dockerfilePath: ./Dockerfile
-    healthCheckPath: /
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:10000 app:app
